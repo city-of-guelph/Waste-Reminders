@@ -1,0 +1,296 @@
+textarea{
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  resize: none;
+  overflow: hidden;
+  font-size: 72px;
+  width: 600px;
+  height:600px;
+}
+/* body{ */
+/* 	background-color: #E6E6E6; */
+/* 	} */
+.tt-dropdown-menu {
+  min-width: 160px;
+  margin-top: 2px;
+  padding: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+  width:100%;        
+}
+
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+}
+
+.tt-suggestion.tt-is-under-cursor a {
+  color: #fff;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.azm-social {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	color: #fff;
+	text-align: center;
+	-moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+	-o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+.azm-social:hover, .azm-social:focus, .azm-social:active { outline: 0; opacity: 0.8; color: #fff; }
+
+.azm-size-32 {
+	width: 32px;
+	height: 32px;
+	margin: 5px;
+	padding-top: 8px;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.azm-size-48 {
+	width: 48px;
+	height: 48px;
+	margin: 8px;
+	padding-top: 13px;
+	font-size: 21px;
+	line-height: 21px;
+}
+
+.azm-size-64 {
+	width: 64px;
+	height: 64px;
+	margin: 10px;
+	padding-top: 16px;
+	font-size: 28px;
+	line-height: 28px;
+}
+
+.azm-r-square {
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
+
+.azm-android { background: #8ec147; }
+.azm-apple { background: #777; }
+.azm-behance { background: #0077ff; }
+.azm-bitcoin { background: #f79012; }
+.azm-buysellads { background: #c90100; }
+.azm-codepen { background: #444; }
+.azm-css3 { background: #0270bb; }
+.azm-delicious { background: #31a9ff; }
+.azm-deviantart { background: #05cc47; }
+.azm-digg { background: #0093cc; }
+.azm-dribbble { background: #ea4c89; }
+.azm-dropbox { background: #007ee5; }
+.azm-drupal { background: #0073ba; }
+.azm-email-1 { background: #35c7ed; }
+.azm-email-2 { background: #35c7ed; }
+.azm-facebook { background: #4862a3; }
+.azm-flickr { background: #ff1981; }
+.azm-foursquare { background: #f04d7a; }
+.azm-git { background: #f64d27; }
+.azm-github { background: #999; }
+.azm-google { background: #3f85f4; }
+.azm-google-plus { background: #dd4b39; }
+.azm-html5 { background: #e54d26; }
+.azm-instagram { background: #3d6b92; }
+.azm-joomla { background: #fc8f30; }
+.azm-jsfiddle { background: #4679bd; }
+.azm-lastfm { background: #df1c23; }
+.azm-linkedin { background: #0177b5; }
+.azm-linux { background: #39a6df; }
+.azm-maxcdn { background: #ff5b02; }
+.azm-medium { background: #333; }
+.azm-pagelines { background: #444; }
+.azm-paypal { background: #009cde; }
+.azm-pinterest { background: #db242c; }
+.azm-reddit { background: #ff4500; }
+.azm-rss { background: #fc8f55; }
+.azm-share { background: #01924b; }
+.azm-skype { background: #00aff0; }
+.azm-slideshare { background: #0679b5; }
+.azm-soundcloud { background: #ff4e00; }
+.azm-spotify { background: #84bd00; }
+.azm-stack-exchange { background: #366fb3; }
+.azm-stack-overflow { background: #07c; }
+.azm-stumbleupon { background: #ea4b24; }
+.azm-trello { background: #026aa7; }
+.azm-tumblr { background: #2c4762; }
+.azm-twitter { background: #55acee; }
+.azm-vimeo { background: #44bbff; }
+.azm-vine { background: #00bf8f; }
+.azm-vk { background: #6281a3; }
+.azm-whatsapp { background: #59ac23; }
+.azm-windows { background: #00bcf2; }
+.azm-wordpress { background: #1e8cbe; }
+.azm-xing { background: #006464; }
+.azm-yahoo { background: #5210c4; }
+.azm-yelp { background: #c41200; }
+.azm-youtube { background: #d02022; }
+.azm-youtube-play { background: #d02022; }
+
+#searchinput {
+	z-index: 0;
+}
+
+#searchclear {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.headerTextHighlight {
+	color: black;
+	font-weight: bold;
+}
+
+.headerText {
+	color: black;
+}
+
+body {
+	padding-top: 20px;
+	font-size: 14px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ #calendar {
+    margin: 0px 0px 0px 0px;
+ }
+
+h1 {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;;
+	font-weight: 400;
+	font-size: 40px;
+}
+
+.margin-base-vertical {
+	margin: 40px 0;
+}
+.margin-base-vertical-2 {
+	margin: 10px 0;
+}
+
+.panel {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.top5 { margin-top:5px; }
+
+.top10 { margin-top:10px; }
+
+.center h2 {display: inline-block; margin: 0 auto;}
+.center img {vertical-align: middle;}
+
+@media(min-width: 320px) {
+  
+	.givewaste img {
+		max-width: 80px;
+		max-height: 29px;
+		margin: 40px 0;
+	}
+
+	.guelphlogo img {
+		max-width: 80px;
+		max-height: 28px;
+		margin: 40px 0;
+	}
+
+	.button-bottom-margin{
+		margin-bottom:10px;
+	}
+
+  h2 {
+    font-size: 18pt;
+  }
+}
+
+@media(min-width: 767px) {
+    .givewaste img {
+        max-width: 140px;
+        max-height: 50px;
+        margin: 10px 0;
+    }
+
+    .guelphlogo img {
+        max-width: 110px;
+        max-height: 39px;
+        margin: 20px 0;
+    }
+
+	.button-bottom-margin{
+		margin-bottom:0px;
+	}
+
+  h2 {
+    font-size: 28pt;
+  }
+}
+
+.btn.btn-success {
+	color: #fff !important;
+	background-color: #008A00;
+	border-color: #008A00;
+}
+
+.progress-step.is-active .progress-marker {
+    background-color: #007fb0;
+}
+
+.progress-step .progress-marker {
+    color: #fff;
+    background-color: #757575;
+}
+
+.progress-step:hover > .progress-marker {
+      background-color: #007fb0;
+}
+
+.progress-step.is-complete .progress-marker {
+    background-color: #007fb0;
+}
+
+.btn.btn-info {
+  color: #fff !important;;
+  background-color: #007fb0;
+  border-color: #007fb0;
+}
+
+.progress-title-guelph {
+	font-size: 18px;
+}

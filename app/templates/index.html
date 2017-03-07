@@ -1,0 +1,38 @@
+{% extends 'master.html' %}
+{%block title %} Give Waste a New Life {% endblock %}
+{% block body %}
+
+		<div class="row text-center">
+			Find your waste collection schedule and/or sign up for automated reminders:
+		</div>
+
+		<form id="addressForm" class="margin-base-vertical-2" method="POST" action="/getInfo/">
+			<div class="row">
+				<div class="col-sm-8 input-group col-sm-offset-2">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+					<input id="searchinput" type="search" class="form-control input-md" name="address" placeholder="1 CARDEN ST"
+							 style="text-align: center;" autocomplete="off" data-provide="typeahead" data-items="7" data-source= '{{lst|tojson|safe}}'  tabindex="0"
+							aria-label="Enter Your Address"/>
+					<span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<p><p>
+					<button id="submitButton" type="submit" class="btn btn-success btn-lg">Submit</button>
+				</div>
+			</div>
+			<div class="row top10">
+				<div class="col-sm-12 col-xs-12 text-center">
+					<a href="http://guelph.ca/living/garbage-and-recycling/resources/frequently-asked-questions/waste-collection-lookup-tool/waste-reminder-unsubscribe/" target="_blank">
+					<span>Click here to unsubscribe</span>
+					</a>
+				</div>
+			</div>
+		</form>
+
+
+{% endblock body %}
+{% block bodyScripts %}
+  <script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}

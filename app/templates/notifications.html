@@ -1,0 +1,155 @@
+{% extends 'master.html' %}
+{%block title %} Your Information {% endblock title %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-sm-12">
+			<H2 class="text-center">Sign up for reminders</H2>
+		</div>
+	</div>
+
+	<div class="row">
+			<ul class="progress-tracker progress-tracker--word progress-tracker--word-center">
+	          <li class="progress-step is-complete">
+	          	<a href="{{ url_for('getInfo') }}" aria-label="Sign up">
+	            <span class="progress-marker">1</span>
+	            </a>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Sign Up</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step is-active">
+	            <span class="progress-marker">2</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Details</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step">
+	            <span class="progress-marker">3</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Verify</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step">
+	            <span class="progress-marker">4</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Done</span>
+	            </span>
+	          </li>
+	        </ul>
+       </div>
+
+	<div class="row">
+		<div class="col-sm-12">
+		<form id="notificationsForm" class="form-group" method="POST" action="/confirmation/">
+
+		  <p>
+		  <div class="row">
+		  	<div class="col-sm-8">
+		  We send notifications out the day prior to your collection. What time would you like to be notified?
+		  </div>
+
+          <div class="col-sm-4 col-xs-7">
+	          <div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+		          <select class="form-control input-md" name="time">
+		          <option value=0>12:00 AM</option>
+		          <option value=1>1:00 AM</option>
+		          <option value=2>2:00 AM</option>
+		          <option value=3>3:00 AM</option>
+		          <option value=4>4:00 AM</option>
+		          <option value=5>5:00 AM</option>
+		          <option value=6>6:00 AM</option>
+		          <option value=7>7:00 AM</option>
+		          <option value=8>8:00 AM</option>
+		          <option value=9>9:00 AM</option>
+		          <option value=10>10:00 AM</option>
+		          <option value=11>11:00 AM</option>
+		          <option value=12>12:00 PM</option>
+		          <option value=13>1:00 PM</option>
+		          <option value=14>2:00 PM</option>
+		          <option value=15>3:00 PM</option>
+		          <option value=16>4:00 PM</option>
+		          <option value=17>5:00 PM</option>
+		          <option value=18>6:00 PM</option>
+		          <option value=19 selected>7:00 PM</option>
+		          <option value=20>8:00 PM</option>
+		          <option value=21>9:00 PM</option>
+		          <option value=22>10:00 PM</option>
+		          <option value=23>11:00 PM</option>
+		          </select>
+	          </div>
+		  </div>
+	</div>
+
+	<p>
+	<div class="row">
+		<div class="row">
+			<div class=" col-sm-10 col-xs-8">
+				<label>What types of notification would you like to receive?</label>
+			</div>
+			<div class="col-sm-2 col-xs-4">
+				<label>Frequency per year</label>
+			</div>
+		</div>
+	</div>
+
+		<div class="row">
+			<div class="col-sm-10 col-xs-9">
+				<input type="checkbox" name="optin1" value="1" aria-label="Every collection"> Every collection<br>
+			</div>
+			<div class="col-sm-2 col-xs-3 text-center">
+				52
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-xs-9">
+				<input type="checkbox" name="optin2" value="2" aria-label="Day changes"> Day changes<br>
+			</div>
+			<div class="col-sm-2 col-xs-3 text-center">
+				9
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-xs-9">
+				<input type="checkbox" name="optin3" value="3" aria-label="Special programs and services (yard waste. paint plus, goods exchange)"> Special programs and services (yard waste, paint plus, goods exchange)<br>
+			</div>
+			<div class="col-sm-2 col-xs-3 text-center">
+				6-8
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-xs-9">
+				<input type="checkbox" name="optin4" value="4" aria-label="Cancelled/delayed due to weather/emergencies/construction"> Cancelled/delayed due to weather/emergencies/construction<br>
+			</div>
+			<div class="col-sm-2 col-xs-3 text-center">
+				1-2
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-xs-9">
+				<input type="checkbox" name="optin5" value="5" aria-label="Waste reduction tips"> Waste reduction tips<br>
+			</div>
+			<div class="col-sm-2 col-xs-3 text-center">
+				6-12
+			</div>
+		</div>
+
+	</div>
+					  <p>
+					  <div class="row">
+					  	<div class="col-sm-12 text-center">
+	    					<button id="submitButton" type="submit" class="btn btn-lg btn-success">Send verification</button>
+	    				</div>
+    				  </div>
+  		</form>
+  	</div>
+
+{% endblock body %}
+{% block bodyScripts %}
+  <script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,64 @@
+	<div class="row">
+		<div class="row">
+			<H2 class="text-center">Collection information</H2>
+		</div>
+		
+		{% if todayCarts is not none %}
+		<div class="col-sm-12">
+			<div class="row text-center" style="margin-bottom:5px;">
+			<font color="#008A00"><strong>Today is your collection day for {% for c in todayCarts %} {{c}} {% endfor %} and GREEN</strong></font>
+			</div>
+		</div>
+		{% endif %}
+		
+		<div class="col-sm-8">
+			<div class="row">
+				<div class="col-xs-3">
+					<span class="headerTextHighlight">Address:</span>
+				</div>
+				<div class="col-xs-9">
+					<span class="headerText">{{address}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<span class="headerTextHighlight">Week:</span>
+				</div>
+				<div class="col-xs-4">
+					<span class="headerText">{{schedule}}</span>
+				</div>
+				<div class="col-xs-2">
+					<span class="headerTextHighlight">Day:</span>
+				</div>
+				<div class="col-xs-3">
+					<span class="headerText">{% if collectionDay is not none %}
+								     {% for i in collectionDay %} {{i}} {% endfor %}  {% endif %}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+				<span class="headerTextHighlight">Next:</span>
+				</div>
+				<div class="col-xs-9">
+					<span class="headerText">{% if schedule != 'Please contact the city.' %} {{nextDate}} {% endif %}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<span class="headerTextHighlight">Carts:</span>
+				</div>
+				<div class="col-xs-8">
+					<span class="headerText">{% if nextCarts is not none %} {% for c in nextCarts %} {{c}} {% endfor %} and GREEN {% endif %}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="text-center center-block" style="float: none;">
+				{% if schedule != "Week Z" %}
+				<a href="{{ url_for('calendar') }}" target="_blank" role="button" class="btn btn-info btn-block" tabindex="0">Calendar</a>
+				{% endif %}
+				<p/><p/>
+				<a href="{{ url_for('home') }}" role="button" class="btn btn-success btn-block">Change Address</a>
+			</div>
+		</div>
+	</div>

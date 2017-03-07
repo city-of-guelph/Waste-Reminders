@@ -1,0 +1,141 @@
+{% extends 'master.html' %}
+{%block title %} Your Information {% endblock title %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-sm-12">
+			<H2 class="text-center">Sign up for reminders</H2>
+		</div>
+	</div>
+
+	<div class="row">
+		<ul class="progress-tracker progress-tracker--word progress-tracker--word-center">
+          <li class="progress-step is-complete">
+			<a href="{{ url_for('getInfo') }}" aria-label="Sign Up">
+            <span class="progress-marker">1</span>
+            </a>
+            <span class="progress-text">
+              <span class="progress-title progress-title-guelph">Sign Up</span>
+            </span>
+          </li>
+
+          <li class="progress-step is-complete">
+          	<a href="{{ url_for('signup') }}" aria-label="Details">
+            	<span class="progress-marker">2</span>
+            </a>
+            <span class="progress-text">
+              <span class="progress-title progress-title-guelph">Details</span>
+            </span>
+          </li>
+
+          <li class="progress-step is-active">
+            <span class="progress-marker">3</span>
+            <span class="progress-text">
+              <span class="progress-title progress-title-guelph">Verify</span>
+            </span>
+          </li>
+
+          <li class="progress-step">
+            <span class="progress-marker">4</span>
+            <span class="progress-text">
+              <span class="progress-title progress-title-guelph">Done</span>
+            </span>
+          </li>
+        </ul>
+       </div>
+
+	<div class="row">
+		<div class="text-center">
+			<span>A unique confirmation code has been sent to each of your contact method(s). <br/>Please input the verification code in the appropriate box below:</span>
+		</div>
+		<p>
+	</div>
+	<div class="row">
+		<form id="confirmationForm" class="form-group form-horizontal" method="POST" action="/verify/">
+			    {% if emailAddress is not none and emailAddress|length > 0 %}
+			    <div class="row col-sm-12 col-xs-12 center-block">
+			    	  <div class="col-sm-6 col-xs-6">
+			    	  	<label for="emailCode" class="control-label pull-right">{{emailAddress}}</label>
+			    		</div>
+				      <div class="input-group col-sm-6 col-xs-6">
+					      <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+						  <input id="emailCode" type="text" class="form-control input-md" name="emailCode" style="text-align: center;" autocomplete="off"
+						  					aria-label="Enter email address verification code"	placeholder="Verify Email Code"/>
+					  </div>
+				  </div>
+				  {% endif %}
+				  {% if textPhoneNumber is not none and textPhoneNumber|length > 0 %}
+					      <div class="row col-sm-12 col-xs-12 center-block top5">
+					    	  <div class="col-sm-6 col-xs-6">
+					    	  	<label for="textCode" class="control-label pull-right phoneFormat">{{textPhoneNumber}}</label>
+					    	  </div>
+				      <div class="input-group col-sm-6 col-xs-6">
+					      <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+						  <input id="textCode" type="text" class="form-control input-md" name="textCode" style="text-align: center;" autocomplete="off"
+						  		aria-label="Enter text number verification code" placeholder="Verify Text Code" />
+				  		</div>
+				  </div>
+				  {% endif %}
+				  {% if callPhoneNumber is not none and callPhoneNumber|length > 0 %}
+					      <div class="row col-sm-12 col-xs-12 center-block top5">
+					    	  <div class="col-sm-6 col-xs-6">
+					    	  	<label for="callCode" class="control-label pull-right phoneFormat">{{callPhoneNumber}}</label>
+					    	  </div>
+				      <div class="input-group col-sm-6 col-xs-6">
+					      <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+						  <input id="callCode" type="text" class="form-control input-md" name="callCode" style="text-align: center;" autocomplete="off"
+						  		aria-label="Enter call number verification code" placeholder="Verify Phone Code" />
+					  </div>
+				  </div>
+				  {% endif %}
+				  <p>
+				  <div class="row top5">
+				  	<div class="col-sm-12 text-center top5">
+    					<button id="submitButton" type="submit" class="btn btn-success btn-lg top10">Verify</button>
+    				</div>
+   				  </div>
+					<div class="row top10">
+						<div class="col-sm-12 col-xs-12 text-center">
+							<span>By clicking Verify you agree to this tool's terms of service and privacy policy.<br><a data-toggle="modal" href="#termsModal">Click here to read more about privacy.</a></span>
+							</a>
+						</div>
+					</div>
+   			</form>
+   		</div>
+
+	    <div class="modal fade" id="termsModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	          <div class="modal-dialog modal-lg">
+	              <div class="modal-content">
+	                  <div class="modal-header">
+	                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                      <h4 class="modal-title" id="myModalLabel">Terms of Service</h4>
+	                  </div>
+						<div class="modal-body">
+							<strong>Terms of Service</strong>
+							<p>Every effort is made to ensure the information provided by this service is timely and accurate however information should be verified independently before being used or relied on. To do so contact Solid Waste Resources at 519-767-0598, TTY: 519-826-9771.</p>
+
+							<p>All information is provided on an "as is" basis without warranty of any kind, either expressed or implied, statutory or otherwise. The City does not warrant or make any representations as to the quality, content, accuracy or completeness of the information, text, graphics, links and other items contained on its web site. The City makes no warranties, express or implied as to the fitness of the information for any purpose, or to results obtained by individuals using the information and is not responsible for any action taken in reliance on the information contained herein. Material is provided as general information only and is not intended to provide specific legal advice for any individual and should not be relied upon in that regard.</p>
+
+							<strong>Privacy Policy</strong>
+							<p>Personal information, as defined by the Municipal Freedom of Information and Protection of Privacy Act (MFIPPA) is collected under the authority of the Municipal Act, 2001, and in accordance with the provisions of MFIPPA.</p>
+
+							<p>Personal information on this tool will be used for the purpose of Waste Collection Programs and Services.</p>
+
+							<p>If you have questions about this collection, use, and disclosure of this information, contact the City of Guelph's Information and Access Coordinator at 519-822-1260 ext. 2349 or <a href="mailto:privacy@guelph.ca" target="_top">privacy@guelph.ca.</a></p>
+
+							<p>For more information see the City of Guelph's <a href="http://guelph.ca/city-hall/access-to-information/website-privacy-policy/" target="_blank">privacy policy.</a></p>
+
+						</div>
+
+	                  <div class="modal-footer">
+	                      <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+	                  </div>
+
+	              </div>
+	          </div>
+	    </div>
+{% endblock body %}
+{% block bodyScripts %}
+	<script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}

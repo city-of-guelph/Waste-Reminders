@@ -1,0 +1,64 @@
+{% extends 'master.html' %}
+{%block title %} Your Information {% endblock title %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-sm-12">
+			<H2 class="text-center">Sign up for reminders</H2>
+		</div>
+	</div>
+
+	<div class="row">
+			<ul class="progress-tracker progress-tracker--word progress-tracker--word-center">
+	          <li class="progress-step is-complete">
+	            <span class="progress-marker">1</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Sign Up</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step is-complete">
+            	<span class="progress-marker">2</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Details</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step is-complete">
+	            <span class="progress-marker">3</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Verify</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step is-complete">
+	            <span class="progress-marker">4</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Done</span>
+	            </span>
+	          </li>
+	        </ul>
+       </div>
+
+	<div class="row">
+		<div class="text-center">
+			<h4>
+				<span>Congratulations you have successfully signed up for automatic notifications from the City of Guelph Solid Waste Resources!
+				<br/>You will begin receiving notifications soon.</span>
+				<br/><span>Thank you!</span>
+			</h4>
+		</div>
+		<p>
+	</div>
+	<div class="row top10">
+		<div class="text-center">
+			<a href="{{ url_for('home') }}" class="btn btn-success btn-lg">Lookup Another Address</a>
+		</div>
+	</div>
+
+
+{% endblock body %}
+{% block bodyScripts %}
+	<script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}

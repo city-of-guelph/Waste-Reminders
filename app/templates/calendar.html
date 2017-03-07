@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+
+  <title>Your Collection Calendar</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="icon" type="image/png" href="{{ url_for ('static', filename='img/logo.png')}}">
+
+    <link rel="stylesheet" href="{{ url_for('bower.static', filename='font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('bower.static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+<!--     <link rel="stylesheet" href="{{ url_for('bower.static', filename='bootstrap/dist/css/bootstrap-theme.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('bower.static', filename='progress-tracker/app/styles/progress-tracker.css') }}">
+    <link href="{{ url_for('bower.static', filename='fullcalendar/dist/fullcalendar.min.css') }}" rel='stylesheet' />
+    <link href="{{ url_for('bower.static', filename='fullcalendar/dist/fullcalendar.print.css') }}" rel='stylesheet' media='print' />
+
+  	<link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+{% block headScripts %}
+
+{% endblock headScripts %}
+
+</head>
+<body>
+
+{% block body %}
+	<div id="fullCalModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+        	</div>
+    	</div>
+	</div>
+
+	<div class="container-fluid">
+
+	<div class = "row">
+		<div class="col-sm-2 col-sm-offset-1 col-xs-3 guelphlogo">
+			<img src="{{ url_for('static', filename='img/cog_logo.png') }}" class="pull-left" alt="City of Guelph" />
+		</div>
+		<div class="col-sm-6 col-xs-6 text-center">
+			<h2>Waste Collection Schedule</h2>
+		</div>
+		<div class="col-sm-2 col-xs-3 givewaste">
+			<img src="{{ url_for('static', filename='img/GiveWaste_logo_CMYK.png') }}" class="pull-right" alt="Give Waste A Chance" />
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class="row">
+    	<div class="col-lg-2 col-lg-offset-1 col-md-3 col-sm-3 col-sm-offset-1 col-xs-offset-1 col-xs-10 button-bottom-margin">
+			<a class="btn btn-default hidden-print pull-left btn-block" href="/download" role="button">Add To My Calendar</a>
+      	</div>
+      	<div class="col-lg-1 col-lg-offset-6 col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 col-xs-offset-1 col-xs-10 button-bottom-margin">
+        	<a href={{pdfLink}} target="_blank" role="button" class="btn btn-success hidden-print pull-right btn-block">Print Year</a>
+		</div>
+		<div class="col-lg-1 col-lg-offset-0 col-sm-offset-0 col-sm-2 col-xs-10 col-xs-offset-1 button-bottom-margin">
+        	<button class="btn btn-info hidden-print pull-right btn-block" onclick="print()" role="button">Print Month</button>
+      	</div>
+    </div>
+	<div class="container">
+		<div id="errorMessages" class="row">
+			{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    {% for message in messages %}
+		      <p><center><strong><font color="#b6121b">{{ message }}</strong></center></p></font>
+		    {% endfor %}
+		  {% endif %}
+		{% endwith %}
+		</div>
+	</div>
+
+		<div class="row">
+
+			<div class="col-sm-10 col-sm-offset-1 panel panel-default">
+				<div id='calendar'></div>
+			</div>
+
+		</div>
+
+	</div>
+{% endblock body %}
+
+{% block tail_js %}
+  <script src="{{ url_for('bower.static', filename='jquery/dist/jquery.min.js')}}" type="text/javascript"></script>
+  <script src="{{ url_for('bower.static', filename='bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
+  <script src="{{ url_for('bower.static', filename='moment/min/moment.min.js')}}"></script>
+  <script src="{{ url_for('bower.static', filename='fullcalendar/dist/fullcalendar.min.js')}}"></script>
+
+  <script>
+
+  $(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      header: {
+            left: 'today',
+        center: 'title',
+        right: 'prev,next'
+      },
+         //restricting available dates to 2 moths in future
+          viewRender: function(view,element) {
+              var now = new Date(new Date().getFullYear(), 0, 1);
+              var end = new Date(new Date().getFullYear() + 1, 11, 31)
+
+              if ( end < view.end) {
+                  $("#calendar .fc-next-button").hide();
+                  return false;
+              }
+              else {
+                  $("#calendar .fc-next-button").show();
+              }
+
+              if ( view.start < now) {
+                  $("#calendar .fc-prev-button").hide();
+                  return false;
+              }
+              else {
+                  $("#calendar .fc-prev-button").show();
+              }
+          },
+        eventLimit: true,
+      fixedWeekCount: false,
+      contentHeight: 700,
+      events: [
+
+      {% for e in specialEvents %}
+        {
+        title: {{e[0]|tojson|safe}},
+        start: {{e[1]|tojson|safe}},
+        end: {{e[2]|tojson|safe}},
+        description: {{e[3]|tojson|safe}},
+        color: 'orange'
+        },
+      {% endfor %}
+
+      {% for d in statDates %}
+        {
+        title: 'Designated Holiday',
+        start: {{d|tojson|safe}},
+        color: '#b6121b',
+        description: "{{statHolidayDesc}}"
+        },
+        {
+          start: {{ d|tojson|safe }},
+          rendering: 'background',
+          color: '#b6121b'
+        },
+      {% endfor %}
+
+
+      {% if schedList is not none %}
+      {% for i in schedList[0] %}
+
+        {
+          start: {{ i[0]|tojson|safe }},
+          rendering: 'background',
+          color: {{ i[1]|tojson|safe }}
+        },
+      {% endfor %}
+
+
+      {% for x in range(pickupDays|length) %}
+
+        {
+        title: ' GREEN Cart',
+        start: {{pickupDays[x]|tojson|safe}},
+        color: '#008A00',
+        description: "{{greenCartDesc}}"
+        },
+
+        {% for m in schedList[1][x] %}
+          {
+          title: {{ m|tojson|safe }} + ' Cart',
+          start: {{ pickupDays[x]|tojson|safe }},
+          description:{% if m == 'GREY' %}
+                  "{{greyCartDesc}}",
+                {% else %}
+                  "{{blueCartDesc}}",
+                {% endif %}
+          color: {% if m == 'GREY' %}
+            '#757575'
+             {% else %}
+              '#007fb0'
+             {% endif %}
+          },
+        {% endfor %}
+      {% endfor %}
+      {% endif %}
+        {
+          title: '',
+          start: '1970-01-01',
+          color: '#FFFFFF',
+        }
+      ],
+
+      eventClick:  function(event, jsEvent, view) {
+            $('#modalTitle').html(event.title);
+            $('#modalBody').html(event.description);
+            $('#eventUrl').attr('href',event.url);
+            $('#fullCalModal').modal();
+          }
+    });
+
+  });
+
+</script>
+
+{% endblock %}
+
+</body>
+</html>

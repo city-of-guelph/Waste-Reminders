@@ -1,0 +1,4 @@
+Test special event
+04/10/2017
+04/10/2017
+This is a test event for notifications

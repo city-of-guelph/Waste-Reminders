@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+
+	<title>{% block title %}{% endblock title %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="{{ url_for('bower.static', filename='eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" />
+<link rel="stylesheet" href="{{ url_for('bower.static', filename='bootstrap/dist/css/bootstrap.css')}}" />
+<!-- <link rel="stylesheet" href="{{ url_for('bower.static', filename='bootstrap/dist/css/bootstrap-theme.css')}}" /> -->
+<link rel="stylesheet" href="{{ url_for('bower.static', filename='font-awesome/css/font-awesome.css')}}" />
+<link rel="stylesheet" href="{{ url_for('bower.static', filename='progress-tracker/app/styles/progress-tracker.css')}}" />
+
+
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
+
+	<link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+<script src="{{ url_for('bower.static', filename='jquery/dist/jquery.js')}}"></script>
+<script src="{{ url_for('bower.static', filename='moment/moment.js')}}"></script>
+<script src="{{ url_for('bower.static', filename='jquery.maskedinput/dist/jquery.maskedinput.js')}}"></script>
+<script src="{{ url_for('bower.static', filename='js-cookie/src/js.cookie.js')}}"></script>
+<script src="{{ url_for('bower.static', filename='eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{ url_for('bower.static', filename='bootstrap/dist/js/bootstrap.js')}}"></script>
+
+  {% block headScripts %}
+  {% endblock headScripts %}
+
+	<style>
+  </style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 panel-default">
+				{% block body %}
+				{% endblock body %}
+			</div>
+		</div>
+		<div id="errorMessages" class="row">
+			{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    {% for message in messages %}
+		      <p><center><strong><font color="#b6121b">{{ message }}</strong></center></p></font>
+		    {% endfor %}
+		  {% endif %}
+		{% endwith %}
+		</div>
+	</div>
+  <footer class="footer hidden-print">
+  <div class="container hidden-print">
+  </div>
+  </footer>
+{% block bodyScripts %}
+{% endblock %}
+
+  <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+</body>
+</html>

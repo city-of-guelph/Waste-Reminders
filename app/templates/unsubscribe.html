@@ -1,0 +1,79 @@
+{% extends 'master.html' %}
+{%block title %} Unsubscribe {% endblock title %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-sm-12">
+			<H2 class="text-center">Unsubscribe</H2>
+		</div>
+	</div>
+
+	<form id="unsubscribeForm" class="form-group" method="POST" action="/remove/">
+
+		<div class="row">
+			<div class="text-center">
+			<span>Please enter your subscribed address</span>
+			</div>
+			<p>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row center-block col-sm-10" style="float: none;">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+						<input id="searchinput" type="search" class="form-control input-md" name="address" placeholder="1 CARDEN ST"
+								style="text-align: center;" autocomplete="off" data-provide="typeahead" data-items="7" data-source= '{{lst|tojson|safe}}'  tabindex="0"
+								aria-label="Enter Your Address" />
+						<span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row top10">
+			<div class="text-center">
+			<span>Please provide us with one or more piece of contact information that you have previously signed up for notifications.</span>
+			</div>
+			<p>
+		</div>
+
+		<div class="row top5">
+			<div class="col-sm-12">
+					<div class="row center-block col-sm-10" style="float: none;">
+					      <div class="input-group">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+							  <input id="emailInput" type="email" class="form-control input-md" name="email" placeholder="yourname@example.com" style="text-align: center;" autocomplete="off"
+							  		aria-label="Enter your email address" />
+						  </div>
+					  </div>
+						      <div class="row center-block col-sm-10 top5" style="float: none;">
+					      <div class="input-group">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+							  <input id="textNumberInput" type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' oninvalid="this.setCustomValidity('Please enter a 10 digit phone number')" oninput="setCustomValidity('')"
+							  		class="form-control input-md" name="text" placeholder="Number to receive text messages" style="text-align: center;" autocomplete="off"
+							  		aria-label="Enter your number to receive text messages" />
+					  		</div>
+					  </div>
+						      <div class="row center-block col-sm-10 top5" style="float: none;">
+					      <div class="input-group">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+							  <input id="callNumberInput" type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' oninvalid="this.setCustomValidity('Please enter a 10 digit phone number')" oninput="setCustomValidity('')"
+							  		class="form-control input-md" name="call" placeholder="Number to receive phone calls" style="text-align: center;" autocomplete="off"
+							  		aria-label="Enter your number to receive phone calls" />
+						  </div>
+					  </div>
+
+					  <div class="row top5">
+					  	<div class="col-sm-12 text-center">
+	    					<button id="submitButton" type="submit" class="btn btn-success btn-lg">Unsubscribe</button>
+	    				</div>
+    				  </div>
+   			</div>
+	    </div>
+ 	</form>
+
+{% endblock body %}
+{% block bodyScripts %}
+	<script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}

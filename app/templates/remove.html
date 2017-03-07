@@ -1,0 +1,63 @@
+{% extends 'master.html' %}
+{%block title %} Unsubscribe {% endblock title %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-sm-12">
+			<H2 class="text-center">Unsubscribe</H2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-center">
+			<h4>
+				<span>You have been successfully unsubscribed from the following communication methods:</span><br/>
+			</h4>
+		</div>
+	    {% if removeEmailAddress is not none and removeEmailAddress|length > 0 %}
+	    <div class="row col-sm-12 col-xs-12 center-block">
+	    	  <div class="col-sm-6 col-xs-6">
+	    	  	<label class="control-label pull-right">E-Mail:</label>
+	    	  </div>
+	      <div class="input-group col-sm-6 col-xs-6">
+	      	<span>{{removeEmailAddress}}</span>
+		  </div>
+	  </div>
+	  {% endif %}
+
+	    {% if removeTextPhoneNumber is not none and removeTextPhoneNumber|length > 0 %}
+	    <div class="row col-sm-12 col-xs-12 center-block top5">
+	    	  <div class="col-sm-6 col-xs-6">
+	    	  	<label class="control-label pull-right">Text Messages:</label>
+	    	  </div>
+	      <div class="input-group col-sm-6 col-xs-6">
+	      	<span class="phoneFormat">{{removeTextPhoneNumber}}</span>
+		  </div>
+	  </div>
+	  {% endif %}
+
+
+	    {% if removeCallPhoneNumber is not none and removeCallPhoneNumber|length > 0 %}
+	    <div class="row col-sm-12 col-xs-12 center-block top5">
+	    	  <div class="col-sm-6 col-xs-6">
+	    	  	<label class="control-label pull-right">Phone Calls:</label>
+	    	  </div>
+	      <div class="input-group col-sm-6 col-xs-6">
+	      	<span class="phoneFormat">{{removeCallPhoneNumber}}</span>
+		  </div>
+	  </div>
+	  {% endif %}
+
+	</div>
+	<div class="row top10">
+		<div class="text-center">
+			<a href="{{ url_for('home') }}" class="btn btn-success btn-lg">Lookup Another Address</a>
+		</div>
+	</div>
+
+
+{% endblock body %}
+{% block bodyScripts %}
+	<script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}

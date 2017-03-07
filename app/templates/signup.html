@@ -1,0 +1,97 @@
+{% extends 'master.html' %}
+{%block title %} Your Information {% endblock title %}
+
+{% block body %}
+
+	{% include 'collectionInfo.html' %}
+
+	<div class="row">
+		<div class="col-sm-12">
+			<H2 class="text-center">Sign up for reminders</H2>
+		</div>
+	</div>
+
+	<div class="row">
+			<ul class="progress-tracker progress-tracker--word progress-tracker--word-center">
+	          <li class="progress-step is-active">
+	            <span class="progress-marker">1</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Sign Up</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step">
+	            <span class="progress-marker">2</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Details</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step">
+	            <span class="progress-marker">3</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Verify</span>
+	            </span>
+	          </li>
+
+	          <li class="progress-step">
+	            <span class="progress-marker">4</span>
+	            <span class="progress-text">
+	              <span class="progress-title progress-title-guelph">Done</span>
+	            </span>
+	          </li>
+	        </ul>
+       </div>
+
+	<div class="row">
+		<div class="text-center">
+		<span>We send email, phone and text reminders. <br/>Please provide us with one or more pieces of contact information.</span>
+		</div>
+		<p>
+	</div>
+	<form id="signupForm" class="form-group" method="POST" action="/signup/">
+	<div class="row">
+		<div class="col-sm-12">
+						    <div class="row center-block col-sm-10" style="float: none;">
+					      <div class="input-group">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+							  <input id="emailInput" type="email" class="form-control input-md" name="email" data-type="search" placeholder="yourname@example.com"
+							  style="text-align: center;" autocomplete="off" value="{{emailAddress}}" aria-label="Enter your email address" />
+						  </div>
+					  </div>
+						      <div class="row center-block col-sm-10 top5" style="float: none;">
+					      <div class="input-group">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+							  <input id="textNumberInput" type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' oninvalid="this.setCustomValidity('Please enter a 10 digit phone number')"
+							  		oninput="setCustomValidity('')"	class="form-control input-md" name="text" placeholder="Number to receive text messages" style="text-align: center;"
+							  		autocomplete="off" value="{{textPhoneNumber}}" aria-label="Enter your number to receive text messages" />
+					  		</div>
+					  </div>
+						      <div class="row center-block col-sm-10 top5" style="float: none;">
+					      <div class="input-group">
+						      <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+							  <input id="callNumberInput" type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' oninvalid="this.setCustomValidity('Please enter a 10 digit phone number')"
+							  		oninput="setCustomValidity('')"	class="form-control input-md" name="call" placeholder="Number to receive phone calls" style="text-align: center;"
+							  		autocomplete="off" value="{{callPhoneNumber}}" aria-label="Enter your number to receive phone calls" />
+						  </div>
+					  </div>
+
+					  <div class="row top5">
+					  	<div class="center-block col-sm-6" style="float: none;">
+				                {{ recaptcha }}
+				            </div>
+					  </div>
+
+					  <div class="row top5">
+					  	<div class="col-sm-12 text-center">
+	    					<button id="submitButton" type="submit" class="btn btn-success btn-lg">Sign Up</button>
+	    				</div>
+    				  </div>
+   			</div>
+	    </div>
+ 			</form>
+
+{% endblock body %}
+{% block bodyScripts %}
+	<script src="{{ url_for('bower.static', filename='bootstrap3-typeahead/bootstrap3-typeahead.js') }}"></script>
+{% endblock %}
